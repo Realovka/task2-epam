@@ -1,6 +1,7 @@
 package by.epam.medicines.builder;
 
 public enum MedicineXmlTag {
+    MEDICINES,
     MEDICINE,
     NAME,
     PHARM,
