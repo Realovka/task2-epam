@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="medicines" type="medicinesType"/>
+  <xs:complexType name="analogType">
+    <xs:sequence>
+      <xs:element name="analog-name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Berlipril"/>
+            <xs:enumeration value="Enap"/>
+            <xs:enumeration value="Amoxiclav"/>
+            <xs:enumeration value="Momezal"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificateType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="number"/>
+      <xs:element type="xs:string" name="issuance"/>
+      <xs:element type="xs:string" name="expriration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="packageType">
+    <xs:sequence>
+      <xs:element name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="tablet"/>
+            <xs:enumeration value="spray"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="number-in-package">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="14"/>
+            <xs:enumeration value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="price-per-package">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="2.3"/>
+            <xs:enumeration value="16.00"/>
+            <xs:enumeration value="32.30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosageType">
+    <xs:sequence>
+      <xs:element name="drug-dosage">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="reception-multiplicity">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="versionType">
+    <xs:sequence>
+      <xs:element type="certificateType" name="certificate"/>
+      <xs:element type="packageType" name="package"/>
+      <xs:element type="dosageType" name="dosage"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="medicineType">
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Enalapril-LF"/>
+            <xs:enumeration value="Augmentin"/>
+            <xs:enumeration value="Nazonex"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pharm">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Lecfarm"/>
+            <xs:enumeration value="GSK"/>
+            <xs:enumeration value="Berlin-chemie"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="group">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="antihypertensive"/>
+            <xs:enumeration value="antibiotic"/>
+            <xs:enumeration value="hormonal"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="analogType" name="analog" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="versionType" name="version"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+    <xs:attribute type="xs:string" name="original" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="medicinesType">
+    <xs:sequence>
+      <xs:element type="medicineType" name="medicine" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

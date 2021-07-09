@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.example.сom/medicines medicines.xsd">
+
+    <medicine id="1">
+        <name>Enalapril-LF</name>
+        <pharm>Lecfarm</pharm>
+        <group>antihypertensive</group>
+        <analog>
+            <analog-name>Berlipril</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Enap</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>1</number>
+                <issuance>2020-06-02</issuance>
+                <expiration>2020-06-02</expiration>
+            </certificate>
+            <package>
+                <type>box</type>
+                <number-in-package>30</number-in-package>
+                <price-per-package>2.3</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>10</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+
+    <medicine id="2">
+        <name>Ramilong</name>
+        <pharm>Lecfarm</pharm>
+        <group>antihypertensive</group>
+        <analog>
+            <analog-name>Hartil</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Tritatse</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>1</number>
+                <issuance>2020-06-02</issuance>
+                <expiration>2020-06-02</expiration>
+            </certificate>
+            <package>
+                <type>box</type>
+                <number-in-package>30</number-in-package>
+                <price-per-package>10.7</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>10</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+
+</medicines>
