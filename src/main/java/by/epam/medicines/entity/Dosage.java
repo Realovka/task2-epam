@@ -29,10 +29,27 @@ public class Dosage {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dosage dosage = (Dosage) o;
+        return Double.compare(dosage.dose, dose) == 0 &&
+                receptionMultiplicity == dosage.receptionMultiplicity;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = (int) Double.doubleToLongBits(this.dose);
+        result = receptionMultiplicity;
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "Dosage{" +
-                "dose=" + dose +
-                ", receptionMultiplicity=" + receptionMultiplicity +
-                '}';
+        final StringBuilder sb = new StringBuilder("\nDosage:\n\tdose: ").append(dose);
+        sb.append("\n\treceptionMultiplicity: ").append(receptionMultiplicity);
+        sb.append('\n');
+        return sb.toString();
     }
 }

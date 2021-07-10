@@ -2,6 +2,7 @@ package by.epam.medicines.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Medicine {
     private String id;
@@ -72,14 +73,38 @@ public class Medicine {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Medicine medicine = (Medicine) o;
+        return Objects.equals(id, medicine.id) &&
+                Objects.equals(name, medicine.name) &&
+                Objects.equals(pharm, medicine.pharm) &&
+                Objects.equals(group, medicine.group) &&
+                Objects.equals(analogs, medicine.analogs) &&
+                Objects.equals(versions, medicine.versions);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result *= 31 + (id != null ? id.hashCode() : 0);
+        result *= 31 + (pharm != null ? pharm.hashCode() : 0);
+        result *= 31 + (group != null ? group.hashCode() : 0);
+        result *= 31 + (analogs != null ? analogs.hashCode() : 0);
+        result *= 31 + (versions != null ? versions.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "Medicine{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", pharm='" + pharm + '\'' +
-                ", group='" + group + '\'' +
-                ", analogs=" + analogs +
-                ", versions=" + versions +
-                '}';
+        final StringBuilder sb = new StringBuilder("\nMedicine : \n\tid :").append(id);
+        sb.append("\n\tname : ").append(name);
+        sb.append("\n\tpharm : ").append(pharm);
+        sb.append("\n\tgroup : ").append(group);
+        sb.append("\n\tanalogs : ").append(analogs);
+        sb.append("\n\tversion : ").append(versions);
+        sb.append('\n');
+        return sb.toString();
     }
 }

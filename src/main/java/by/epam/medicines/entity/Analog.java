@@ -1,5 +1,7 @@
 package by.epam.medicines.entity;
 
+import java.util.Objects;
+
 public class Analog {
     private String analogName;
 
@@ -19,9 +21,23 @@ public class Analog {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Analog analog = (Analog) o;
+        return Objects.equals(analogName, analog.analogName);
+    }
+
+    @Override
+    public int hashCode() {
+       return 31 + (analogName != null ? analogName.hashCode() : 0);
+    }
+
+
+    @Override
     public String toString() {
-        return "Analog{" +
-                "analogName='" + analogName + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder().append("\nAnalog : \n\tanalogName : ").append(analogName);
+        sb.append('\n');
+        return sb.toString();
     }
 }

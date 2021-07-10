@@ -1,5 +1,7 @@
 package by.epam.medicines.entity;
 
+import java.util.Objects;
+
 public class Package {
     private String type;
     private int numberInPackage;
@@ -39,11 +41,30 @@ public class Package {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Package aPackage = (Package) o;
+        return numberInPackage == aPackage.numberInPackage &&
+                Double.compare(aPackage.pricePerPackage, pricePerPackage) == 0 &&
+                Objects.equals(type, aPackage.type);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = numberInPackage;
+        result = (int) Double.doubleToLongBits(this.pricePerPackage);
+        result *= 31 + (type != null ? type.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "Package{" +
-                "type='" + type + '\'' +
-                ", numberInPackage=" + numberInPackage +
-                ", pricePerPackage=" + pricePerPackage +
-                '}';
+        final StringBuilder sb = new StringBuilder("\nPackage : \n\ttype : ").append(type);
+        sb.append("\n\tnumberInPackage : ").append(numberInPackage);
+        sb.append("\n\tpricePerPackage : ").append(pricePerPackage);
+        sb.append('\n');
+        return sb.toString();
     }
 }
