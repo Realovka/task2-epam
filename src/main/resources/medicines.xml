@@ -2,7 +2,7 @@
 
 
 <medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://www.example.сom/medicines medicines.xsd">
+           xsi:schemaLocation="http://www.example.сom/medicines medicines.xsd">
 
     <medicine id="1">
         <name>Enalapril-LF</name>
@@ -17,12 +17,12 @@
         <version>
             <form>tablet</form>
             <certificate>
-                <number>1</number>
-                <issuance>2020-06-02</issuance>
-                <expiration>2020-06-02</expiration>
+                <number>20/03/1371</number>
+                <issuance>2016-06-02</issuance>
+                <expiration>2044-01-01</expiration>
             </certificate>
             <package>
-                <type>box</type>
+                <type>blister</type>
                 <number-in-package>30</number-in-package>
                 <price-per-package>2.3</price-per-package>
             </package>
@@ -47,17 +47,520 @@
         <version>
             <form>tablet</form>
             <certificate>
-                <number>1</number>
-                <issuance>2020-06-02</issuance>
-                <expiration>2020-06-02</expiration>
+                <number>20/08/1777</number>
+                <issuance>2020-08-18</issuance>
+                <expiration>2044-01-01</expiration>
             </certificate>
             <package>
-                <type>box</type>
+                <type>blister</type>
                 <number-in-package>30</number-in-package>
                 <price-per-package>10.7</price-per-package>
             </package>
             <dosage>
                 <drug-dosage>10</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+
+    <medicine id="3">
+        <name>Augmentin</name>
+        <pharm>GSK</pharm>
+        <group>antibiotic</group>
+        <analog>
+            <analog-name>Amoklav</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Amoxicar</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>1581/96/01/06/06/11/15/16/16</number>
+                <issuance>2016-10-05</issuance>
+                <expiration>2020-06-02</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>14</number-in-package>
+                <price-per-package>22.35</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>625</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>powder</form>
+            <certificate>
+                <number>7389/05/10/11/15/16/18/20/20</number>
+                <issuance>2020-09-29</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bottle</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>18.75</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>200</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+
+    <medicine id="4">
+        <name>Ulrtafastin</name>
+        <pharm>Medana</pharm>
+        <group>anti-inflammatory</group>
+        <analog>
+            <analog-name>Fastum-gel</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Ketoprofen</analog-name>
+        </analog>
+        <version>
+            <form>gel</form>
+            <certificate>
+                <number>8451/07/08/12/17/17/19</number>
+                <issuance>2017-11-30</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>tuba</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>8.90</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>25</drug-dosage>
+                <reception-multiplicity>3</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>9522/10/16</number>
+                <issuance>2016-03-02</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>20</number-in-package>
+                <price-per-package>11.47</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>100</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="5">
+        <name>Pantap</name>
+        <pharm>Nobel</pharm>
+        <group>flow pump inhibitor</group>
+        <analog>
+            <analog-name>Nolpaza</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Kontroloc</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>8082/07/12/15/17</number>
+                <issuance>2017-09-06</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>28</number-in-package>
+                <price-per-package>28.66</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>20</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="6">
+        <name>Keiver</name>
+        <pharm>Pharmac</pharm>
+        <group>anti-inflammatory</group>
+        <analog>
+            <analog-name>Dex</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Dexalgin</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>10622/18</number>
+                <issuance>2018-01-31</issuance>
+                <expiration>2023-01-31</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>10</number-in-package>
+                <price-per-package>7.85</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>25</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>injection</form>
+            <certificate>
+                <number>10524/16</number>
+                <issuance>2016-11-08</issuance>
+                <expiration>2021-11-08</expiration>
+            </certificate>
+            <package>
+                <type>ampoule</type>
+                <number-in-package>10</number-in-package>
+                <price-per-package>12.33</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>25</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="7">
+        <name>Otrivin</name>
+        <pharm>GSK</pharm>
+        <group>vasoconstrictor</group>
+        <analog>
+            <analog-name>Xylin</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Xynazol</analog-name>
+        </analog>
+        <version>
+            <form>spray</form>
+            <certificate>
+                <number>8939/04/09/14/18/19</number>
+                <issuance>2019-08-23</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bulk</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>9.33</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>10</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="8">
+        <name>Hexicon</name>
+        <pharm>Nizhpharm</pharm>
+        <group>antiseptic</group>
+        <analog>
+            <analog-name>Hexosept</analog-name>
+        </analog>
+        <version>
+            <form>suppository</form>
+            <certificate>
+                <number>6649/04/09/13/18</number>
+                <issuance>2018-10-29</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>10</number-in-package>
+                <price-per-package>15.76</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>16</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="9">
+        <name>Ambrovix</name>
+        <pharm>farmtehnology</pharm>
+        <group>expectorant</group>
+        <analog>
+            <analog-name>Flavamed</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Lazolvan</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Chalixol</analog-name>
+        </analog>
+        <version>
+            <form>syrup</form>
+            <certificate>
+                <number>19/04/1792</number>
+                <issuance>2015-08-18</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bulk</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>5.88</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>15</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>solution for inhalation</form>
+            <certificate>
+                <number>20/12/2535</number>
+                <issuance>2020-12-30</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bulk</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>6.23</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>7.5</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="10">
+        <name>Mildronat</name>
+        <pharm>Grindex</pharm>
+        <group>cardiac</group>
+        <analog>
+            <analog-name>Meldony-MIC</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Meldonat</analog-name>
+        </analog>
+        <version>
+            <form>capsule</form>
+            <certificate>
+                <number>7304/05/10/15/20/20</number>
+                <issuance>2020-05-12</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>60</number-in-package>
+                <price-per-package>46.20</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>500</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+            <version>
+                <form>injection</form>
+                <certificate>
+                    <number>7397/95/99/2000/05/09/10/15/17/18/20</number>
+                    <issuance>2020-07-28</issuance>
+                    <expiration>2044-01-01</expiration>
+                </certificate>
+                <package>
+                    <type>ampoule</type>
+                    <number-in-package>10</number-in-package>
+                    <price-per-package>30.66</price-per-package>
+                </package>
+                <dosage>
+                    <drug-dosage>500</drug-dosage>
+                    <reception-multiplicity>1</reception-multiplicity>
+                </dosage>
+            </version>
+        </version>
+    </medicine>
+
+    <medicine id="11">
+        <name>Preductal OD</name>
+        <pharm>Servier</pharm>
+        <group>cardiac</group>
+        <analog>
+            <analog-name>Tri-zidin</analog-name>
+        </analog>
+        <version>
+            <form>capsule</form>
+            <certificate>
+                <number>10637/18</number>
+                <issuance>2018-04-11</issuance>
+                <expiration>2023-04-11</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>30</number-in-package>
+                <price-per-package>41.37</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>80</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>capsule</form>
+            <certificate>
+                <number>5825/02/07/12/17/18</number>
+                <issuance>2018-05-15</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>60</number-in-package>
+                <price-per-package>41.56</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>35</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="12">
+        <name>Stopdiar</name>
+        <pharm>GedeonRichter</pharm>
+        <group>antimicrobal</group>
+        <analog>
+            <analog-name>Nifuroxazid</analog-name>
+        </analog>
+        <version>
+            <form>syrup</form>
+            <certificate>
+                <number>7876/96/01/06/08/11/12/16</number>
+                <issuance>2016-06-06</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bottle</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>15.78</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>220</drug-dosage>
+                <reception-multiplicity>3</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>10714/19</number>
+                <issuance>2019-03-29</issuance>
+                <expiration>2023-03-29</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>24</number-in-package>
+                <price-per-package>7.88</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>100</drug-dosage>
+                <reception-multiplicity>4</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="13">
+        <name>Dufalac</name>
+        <pharm>Abbott</pharm>
+        <group>laxative</group>
+        <analog>
+            <analog-name>Lactulosa</analog-name>
+        </analog>
+        <version>
+            <form>syrup</form>
+            <certificate>
+                <number>1116/95/03/08/09/10/11/13/16/18</number>
+                <issuance>2018-07-06</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>strip</type>
+                <number-in-package>10</number-in-package>
+                <price-per-package>17.60</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>667</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="14">
+        <name>Espumizan</name>
+        <pharm>Berlin-Chemie</pharm>
+        <group>defoamer</group>
+        <analog>
+            <analog-name>Simet</analog-name>
+        </analog>
+        <version>
+            <form>capsule</form>
+            <certificate>
+                <number>9017/09/14/19/20</number>
+                <issuance>2020-05-05</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>25</number-in-package>
+                <price-per-package>8.41</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>40</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>suspension</form>
+            <certificate>
+                <number>4872/2000/06/11/13/16</number>
+                <issuance>2016-06-26</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>bottle</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>9.77</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>40</drug-dosage>
+                <reception-multiplicity>5</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
+    <medicine id="15">
+        <name>Concor</name>
+        <pharm>Merсk</pharm>
+        <group>antiarrhythmic</group>
+        <analog>
+            <analog-name>Bisoprolol-Maxfarma</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Bisoprolol-LF</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>476/94/99/04/04/08/09/12/15/17/18/20</number>
+                <issuance>2020-06-26</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>30</number-in-package>
+                <price-per-package>11.20</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>5</drug-dosage>
                 <reception-multiplicity>1</reception-multiplicity>
             </dosage>
         </version>

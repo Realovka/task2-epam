@@ -62,7 +62,7 @@ public class Certificate {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder().append("\nCertificate : \n\tnumber").append(number);
+        StringBuilder sb = new StringBuilder().append("\nCertificate : \n\tnumber : ").append(number);
         sb.append("\n\tissuance : ").append(issuance);
         sb.append("\n\texpiration : ").append(expiration);
         sb.append('\n');
