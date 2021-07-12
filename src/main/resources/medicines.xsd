@@ -3,23 +3,24 @@
   <xs:element name="medicines" type="medicinesType"/>
   <xs:complexType name="analogType">
     <xs:sequence>
-      <xs:element name="analog-name">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="Berlipril"/>
-            <xs:enumeration value="Enap"/>
-            <xs:enumeration value="Amoxiclav"/>
-            <xs:enumeration value="Momezal"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
+      <xs:element type="xs:string" name="analog-name"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="certificateType">
     <xs:sequence>
       <xs:element type="xs:string" name="number"/>
       <xs:element type="xs:string" name="issuance"/>
-      <xs:element type="xs:string" name="expriration"/>
+      <xs:element name="expiration">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="2050-01-01"/>
+            <xs:enumeration value="2023-01-31"/>
+            <xs:enumeration value="2021-11-08"/>
+            <xs:enumeration value="2023-04-11"/>
+            <xs:enumeration value="2023-03-29"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="packageType">
@@ -27,8 +28,11 @@
       <xs:element name="type">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="tablet"/>
-            <xs:enumeration value="spray"/>
+            <xs:enumeration value="blister"/>
+            <xs:enumeration value="bottle"/>
+            <xs:enumeration value="tuba"/>
+            <xs:enumeration value="ampoule"/>
+            <xs:enumeration value="strip"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -38,35 +42,29 @@
             <xs:enumeration value="30"/>
             <xs:enumeration value="14"/>
             <xs:enumeration value="1"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="28"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="60"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="25"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="price-per-package">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="2.3"/>
-            <xs:enumeration value="16.00"/>
-            <xs:enumeration value="32.30"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
+      <xs:element type="xs:string" name="price-per-package"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="dosageType">
     <xs:sequence>
-      <xs:element name="drug-dosage">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="10"/>
-            <xs:enumeration value="50"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
+      <xs:element type="xs:string" name="drug-dosage"/>
       <xs:element name="reception-multiplicity">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="1"/>
             <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -74,45 +72,37 @@
   </xs:complexType>
   <xs:complexType name="versionType">
     <xs:sequence>
+      <xs:element name="form">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="tablet"/>
+            <xs:enumeration value="powder"/>
+            <xs:enumeration value="gel"/>
+            <xs:enumeration value="injection"/>
+            <xs:enumeration value="spray"/>
+            <xs:enumeration value="suppository"/>
+            <xs:enumeration value="syrup"/>
+            <xs:enumeration value="solution for inhalation"/>
+            <xs:enumeration value="capsule"/>
+            <xs:enumeration value="suspension"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
       <xs:element type="certificateType" name="certificate"/>
       <xs:element type="packageType" name="package"/>
       <xs:element type="dosageType" name="dosage"/>
+      <xs:element type="versionType" name="version" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="medicineType">
     <xs:sequence>
-      <xs:element name="name">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="Enalapril-LF"/>
-            <xs:enumeration value="Augmentin"/>
-            <xs:enumeration value="Nazonex"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
-      <xs:element name="pharm">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="Lecfarm"/>
-            <xs:enumeration value="GSK"/>
-            <xs:enumeration value="Berlin-chemie"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
-      <xs:element name="group">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="antihypertensive"/>
-            <xs:enumeration value="antibiotic"/>
-            <xs:enumeration value="hormonal"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="pharm"/>
+      <xs:element type="xs:string" name="group"/>
       <xs:element type="analogType" name="analog" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element type="versionType" name="version"/>
+      <xs:element type="versionType" name="version" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute type="xs:string" name="id" use="optional"/>
-    <xs:attribute type="xs:string" name="original" use="optional"/>
   </xs:complexType>
   <xs:complexType name="medicinesType">
     <xs:sequence>
