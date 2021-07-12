@@ -1,9 +1,7 @@
 package by.epam.medicines.builder;
 
-import by.epam.medicines.entity.Analog;
-import by.epam.medicines.entity.Certificate;
-import by.epam.medicines.entity.Medicine;
-import by.epam.medicines.entity.Version;
+import by.epam.medicines.entity.Package;
+import by.epam.medicines.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +16,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class MedicineStaxBuilder {
@@ -145,6 +142,12 @@ public class MedicineStaxBuilder {
                         case CERTIFICATE:
                             version.setCertificate(getCertificate(reader));
                             break;
+                        case PACKAGE:
+                            version.setPackage1(getPackage(reader));
+                            break;
+                        case DOSAGE:
+                            version.setDosage(getDosage(reader));
+                            break;
                     }
                     break;
                 case XMLStreamConstants.END_ELEMENT:
@@ -185,7 +188,67 @@ public class MedicineStaxBuilder {
                     }
             }
         }
-        throw new XMLStreamException("Unknown element in tag <version>");
+        throw new XMLStreamException("Unknown element in tag <certificate>");
+    }
+
+    private Package getPackage(XMLStreamReader reader) throws XMLStreamException {
+        Package package1 = new Package();
+        int type;
+        String name;
+        while (reader.hasNext()) {
+            type = reader.next();
+            switch (type) {
+                case XMLStreamConstants.START_ELEMENT:
+                    name = updateName(reader.getLocalName());
+                    switch (MedicineXmlTag.valueOf(name)) {
+                        case TYPE:
+                            package1.setType(getXMLText(reader));
+                            break;
+                        case NUMBER_IN_PACKAGE:
+                            package1.setNumberInPackage(Integer.parseInt(getXMLText(reader)));
+                            break;
+                        case PRICE_PER_PACKAGE:
+                            package1.setPricePerPackage(Double.parseDouble(getXMLText(reader)));
+                            break;
+                    }
+                    break;
+                case XMLStreamConstants.END_ELEMENT:
+                    name = updateName(reader.getLocalName());
+                    if (MedicineXmlTag.valueOf(name) == MedicineXmlTag.PACKAGE) {
+                        return package1;
+                    }
+            }
+        }
+        throw new XMLStreamException("Unknown element in tag <package>");
+    }
+
+    private Dosage getDosage(XMLStreamReader reader) throws XMLStreamException {
+        Dosage dosage = new Dosage();
+        int type;
+        String name;
+        while (reader.hasNext()) {
+            type = reader.next();
+            switch (type) {
+                case XMLStreamConstants.START_ELEMENT:
+                    name = updateName(reader.getLocalName());
+                    switch (MedicineXmlTag.valueOf(name)) {
+                        case DRUG_DOSAGE:
+                            dosage.setDose(Double.parseDouble(getXMLText(reader)));
+                            break;
+                        case RECEPTION_MULTIPLICITY:
+                            dosage.setReceptionMultiplicity(Integer.parseInt(getXMLText(reader)));
+                            break;
+                    }
+                    break;
+                case XMLStreamConstants.END_ELEMENT:
+                    name = updateName(reader.getLocalName());
+                    if (MedicineXmlTag.valueOf(name) == MedicineXmlTag.DOSAGE) {
+                        return dosage;
+                    }
+            }
+        }
+
+        throw new XMLStreamException("Unknown element in tag <dosage>");
     }
 
     private String getXMLText(XMLStreamReader reader) throws XMLStreamException {
