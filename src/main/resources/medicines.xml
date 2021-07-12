@@ -566,5 +566,51 @@
         </version>
     </medicine>
 
+    <medicine id="16">
+        <name>Megasef</name>
+        <pharm>Nobel</pharm>
+        <group>antibiotic</group>
+        <analog>
+            <analog-name>Zinnat</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Zinex</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>8818/08/13/16/17</number>
+                <issuance>2017-11-27</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>10</number-in-package>
+                <price-per-package>28.30</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>500</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+        <version>
+            <form>injection</form>
+            <certificate>
+                <number>8619/08/12/16/17</number>
+                <issuance>2017-09-25</issuance>
+                <expiration>2044-01-01</expiration>
+            </certificate>
+            <package>
+                <type>ampoule</type>
+                <number-in-package>1</number-in-package>
+                <price-per-package>7.88</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>750</drug-dosage>
+                <reception-multiplicity>2</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>
+
 
 </medicines>
