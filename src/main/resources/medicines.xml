@@ -4,7 +4,7 @@
 <medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://www.example.сom/medicines medicines.xsd">
 
-    <medicine id="1">
+    <medicine id="id1">
         <name>Enalapril-LF</name>
         <pharm>Lecfarm</pharm>
         <group>antihypertensive</group>
@@ -34,7 +34,7 @@
     </medicine>
 
 
-    <medicine id="2">
+    <medicine id="id2">
         <name>Ramilong</name>
         <pharm>Lecfarm</pharm>
         <group>antihypertensive</group>
@@ -64,7 +64,7 @@
     </medicine>
 
 
-    <medicine id="3">
+    <medicine id="id3" original = "true">
         <name>Augmentin</name>
         <pharm>GSK</pharm>
         <group>antibiotic</group>
@@ -111,7 +111,7 @@
     </medicine>
 
 
-    <medicine id="4">
+    <medicine id="id4">
         <name>Ulrtafastin</name>
         <pharm>Medana</pharm>
         <group>anti-inflammatory</group>
@@ -157,7 +157,7 @@
         </version>
     </medicine>
 
-    <medicine id="5">
+    <medicine id="id5">
         <name>Pantap</name>
         <pharm>Nobel</pharm>
         <group>flow pump inhibitor</group>
@@ -186,7 +186,7 @@
         </version>
     </medicine>
 
-    <medicine id="6">
+    <medicine id="id6">
         <name>Keiver</name>
         <pharm>Pharmac</pharm>
         <group>anti-inflammatory</group>
@@ -232,7 +232,7 @@
         </version>
     </medicine>
 
-    <medicine id="7">
+    <medicine id="id7" original="true">
         <name>Otrivin</name>
         <pharm>GSK</pharm>
         <group>vasoconstrictor</group>
@@ -261,7 +261,7 @@
         </version>
     </medicine>
 
-    <medicine id="8">
+    <medicine id="id8">
         <name>Hexicon</name>
         <pharm>Nizhpharm</pharm>
         <group>antiseptic</group>
@@ -287,7 +287,7 @@
         </version>
     </medicine>
 
-    <medicine id="9">
+    <medicine id="id9">
         <name>Ambrovix</name>
         <pharm>farmtehnology</pharm>
         <group>expectorant</group>
@@ -336,7 +336,7 @@
         </version>
     </medicine>
 
-    <medicine id="10">
+    <medicine id="id10" original="true">
         <name>Mildronat</name>
         <pharm>Grindex</pharm>
         <group>cardiac</group>
@@ -382,7 +382,7 @@
         </version>
     </medicine>
 
-    <medicine id="11">
+    <medicine id="id11" original="true">
         <name>Preductal OD</name>
         <pharm>Servier</pharm>
         <group>cardiac</group>
@@ -425,7 +425,7 @@
         </version>
     </medicine>
 
-    <medicine id="12">
+    <medicine id="id12">
         <name>Stopdiar</name>
         <pharm>GedeonRichter</pharm>
         <group>antimicrobal</group>
@@ -468,7 +468,7 @@
         </version>
     </medicine>
 
-    <medicine id="13">
+    <medicine id="id13">
         <name>Dufalac</name>
         <pharm>Abbott</pharm>
         <group>laxative</group>
@@ -494,7 +494,7 @@
         </version>
     </medicine>
 
-    <medicine id="14">
+    <medicine id="id14">
         <name>Espumizan</name>
         <pharm>Berlin-Chemie</pharm>
         <group>defoamer</group>
@@ -537,7 +537,7 @@
         </version>
     </medicine>
 
-    <medicine id="15">
+    <medicine id="id15">
         <name>Concor</name>
         <pharm>Merсk</pharm>
         <group>antiarrhythmic</group>
@@ -566,7 +566,7 @@
         </version>
     </medicine>
 
-    <medicine id="16">
+    <medicine id="id16">
         <name>Megasef</name>
         <pharm>Nobel</pharm>
         <group>antibiotic</group>

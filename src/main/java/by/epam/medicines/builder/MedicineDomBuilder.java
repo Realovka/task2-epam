@@ -1,7 +1,14 @@
 package by.epam.medicines.builder;
 
-import by.epam.medicines.entity.*;
+import by.epam.medicines.entity.Medicine;
+import by.epam.medicines.entity.Analog;
+import by.epam.medicines.entity.Dosage;
+import by.epam.medicines.entity.Certificate;
 import by.epam.medicines.entity.Package;
+import by.epam.medicines.entity.Version;
+import by.epam.medicines.exception.MedicineException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,17 +25,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MedicineDomBuilder {
+public class MedicineDomBuilder extends AbstractMedicineBuilder {
+    private static final Logger logger = LogManager.getLogger();
     private Set<Medicine> medicines;
     private DocumentBuilder docBuilder;
 
-    public MedicineDomBuilder() {
+    public MedicineDomBuilder() throws MedicineException {
         medicines = new HashSet<>();
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
             docBuilder = dbf.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            e.printStackTrace();
+            logger.error("Configuration failed " + e);
+            throw new MedicineException("Configuration failed " + e);
         }
     }
 
@@ -36,7 +45,7 @@ public class MedicineDomBuilder {
         return medicines;
     }
 
-    public void buildSetMedicines(String filename) {
+    public void buildMedicines(String filename) throws MedicineException {
         Document doc;
         try {
             doc = docBuilder.parse(filename);
@@ -47,8 +56,12 @@ public class MedicineDomBuilder {
                 Medicine medicine = buildMedicine(medicineElement);
                 medicines.add(medicine);
             }
-        } catch (IOException | SAXException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            logger.error("Error when file read " + e);
+            throw new MedicineException("Error when file read " + e);
+        } catch (SAXException e) {
+            logger.error("Error when file parse " + e);
+            throw new MedicineException("Error when file parse " + e);
         }
     }
 
@@ -61,9 +74,14 @@ public class MedicineDomBuilder {
         Dosage dosage = new Dosage();
         Version version = new Version();
         medicine.setId(medicineElement.getAttribute(MedicineXmlAttribute.ID.toString()));
+        medicine.setOriginal(medicineElement.getAttribute(MedicineXmlAttribute.ORIGINAL.toString()));
         medicine.setName(getElementTextContent(medicineElement, MedicineXmlTag.NAME.toString()));
         medicine.setPharm(getElementTextContent(medicineElement, MedicineXmlTag.PHARM.toString()));
         medicine.setGroup(getElementTextContent(medicineElement, MedicineXmlTag.GROUP.toString()));
+
+        if(medicineElement.getAttribute(MedicineXmlAttribute.ORIGINAL.toString()).isBlank()) {
+            medicine.setOriginal(Medicine.DEFAULT_ORIGINAL);
+        }
 
         NodeList analogElements = medicineElement.getElementsByTagName(MedicineXmlTag.ANALOG.toString());
         for (int i = 0; i < analogElements.getLength(); i++) {

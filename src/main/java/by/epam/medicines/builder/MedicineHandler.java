@@ -1,18 +1,23 @@
 package by.epam.medicines.builder;
 
-import by.epam.medicines.entity.*;
+import by.epam.medicines.entity.Medicine;
+import by.epam.medicines.entity.Analog;
+import by.epam.medicines.entity.Dosage;
+import by.epam.medicines.entity.Certificate;
 import by.epam.medicines.entity.Package;
+import by.epam.medicines.entity.Version;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MedicineHandler extends DefaultHandler {
 
     private Set<Medicine> medicines;
-    private List<Version> versions;
     private Analog currentAnalog;
     private Version currentVersion;
     private Certificate currentCertificate;
@@ -26,7 +31,6 @@ public class MedicineHandler extends DefaultHandler {
 
     public MedicineHandler() {
         medicines = new HashSet<>();
-        versions = new ArrayList<>();
         withText = EnumSet.range(MedicineXmlTag.NAME, MedicineXmlTag.RECEPTION_MULTIPLICITY);
     }
 
@@ -40,6 +44,13 @@ public class MedicineHandler extends DefaultHandler {
         switch (currentTagName) {
             case MEDICINE: {
                 currentMedicine = new Medicine();
+                if (attributes.getLength() == 1) {
+                    currentMedicine.setId(attributes.getValue(0));
+                    currentMedicine.setOriginal(Medicine.DEFAULT_ORIGINAL);
+                } else {
+                    currentMedicine.setId(attributes.getValue(MedicineXmlAttribute.ID.toString()));
+                    currentMedicine.setOriginal(attributes.getValue(MedicineXmlAttribute.ORIGINAL.toString()));
+                }
                 break;
             }
             case ANALOG: {
@@ -149,6 +160,10 @@ public class MedicineHandler extends DefaultHandler {
                 case RECEPTION_MULTIPLICITY: {
                     currentDosage.setReceptionMultiplicity(Integer.parseInt(data));
                     break;
+                }
+                default: {
+                    throw new EnumConstantNotPresentException(
+                            currentTagName.getDeclaringClass(), currentTagName.name());
                 }
             }
         }

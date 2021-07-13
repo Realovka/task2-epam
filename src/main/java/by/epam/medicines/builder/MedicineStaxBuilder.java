@@ -1,7 +1,12 @@
 package by.epam.medicines.builder;
 
 import by.epam.medicines.entity.Package;
-import by.epam.medicines.entity.*;
+import by.epam.medicines.entity.Medicine;
+import by.epam.medicines.entity.Analog;
+import by.epam.medicines.entity.Dosage;
+import by.epam.medicines.entity.Certificate;
+import by.epam.medicines.entity.Version;
+import by.epam.medicines.exception.MedicineException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MedicineStaxBuilder {
+public class MedicineStaxBuilder extends AbstractMedicineBuilder {
     private static final Logger logger = LogManager.getLogger();
     private Set<Medicine> medicines;
     private XMLInputFactory inputFactory;
@@ -34,7 +39,7 @@ public class MedicineStaxBuilder {
         return medicines;
     }
 
-    public void buildSetMedicines(String filename) {
+    public void buildMedicines(String filename) throws MedicineException {
         XMLStreamReader reader;
         String name;
         try (FileInputStream inputStream = new FileInputStream(new File(filename))) {
@@ -49,16 +54,28 @@ public class MedicineStaxBuilder {
                     }
                 }
             }
-        } catch (XMLStreamException | FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            logger.error("File not found " + e);
+            throw new MedicineException("File not found " + e);
+        } catch (XMLStreamException e) {
+            logger.error("Error when data parse " + e);
+            throw new MedicineException("Error when data parse " + e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error when file read " + e);
+            throw new MedicineException("Error when file read " + e);
         }
     }
 
     private Medicine buildMedicine(XMLStreamReader reader) throws XMLStreamException {
         Medicine medicine = new Medicine();
         medicine.setAnalogs(new ArrayList<>());
+        medicine.setId(reader.getAttributeValue(null, MedicineXmlAttribute.ID.toString()));
+        String original = reader.getAttributeValue(null, MedicineXmlAttribute.ORIGINAL.toString());
+        if (original != null) {
+            medicine.setOriginal(reader.getAttributeValue(null, MedicineXmlAttribute.ORIGINAL.toString()));
+        } else {
+            medicine.setOriginal(Medicine.DEFAULT_ORIGINAL);
+        }
         medicine.setName(reader.getAttributeValue(null, MedicineXmlTag.NAME.toString()));
         medicine.setPharm(reader.getAttributeValue(null, MedicineXmlTag.PHARM.toString()));
         medicine.setGroup(reader.getAttributeValue(null, MedicineXmlTag.GROUP.toString()));
