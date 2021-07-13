@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/medicines"
+        xmlns:tns="http://example.com/medicines"
+        elementFormDefault="qualified">
+  
+  <element name="medicines">
+    <complexType>
+      <sequence>
+        <element name="medicine" type="tns:Medicine" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+  <complexType name="Medicine">
+    <sequence>
+      <element name="name" type="string"/>
+      <element name="pharm" type="string"/>
+      <element name="group" type="string"/>
+      <element name="analog" type="tns:Analog" maxOccurs="unbounded"/>
+      <element name="version" type="tns:Version" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID" use="required"/>
+    <attribute name="original" type="string" use="optional" default="false"/>
+  </complexType>
+
+  <complexType name="Analog">
+    <sequence>
+      <element name="analog-name" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="Version">
+    <sequence>
+      <element name="form" type="string"/>
+      <element name="certificate" type="tns:Certificate"/>
+      <element name="package" type="tns:Package"/>
+      <element name="dosage" type="tns:Dosage"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="Certificate">
+    <sequence>
+      <element name="number" type="string"/>
+      <element name="issuance" type="date"/>
+      <element name="expiration" type="date"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="Package">
+    <sequence>
+      <element name="type" type="string"/>
+      <element name="number-in-package" type="int"/>
+      <element name="price-per-package" type="double"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="Dosage">
+    <sequence>
+      <element name="drug-dosage" type="double"/>
+      <element name="reception-multiplicity" type="int"/>
+    </sequence>
+  </complexType>
+
+  <simpleType name="type">
+    <restriction base="string">
+      <enumeration value="tablet"/>
+      <enumeration value="powder"/>
+      <enumeration value="gel"/>
+      <enumeration value="injection"/>
+      <enumeration value="spray"/>
+      <enumeration value="suppository"/>
+      <enumeration value="syrup"/>
+      <enumeration value="solution for inhalation"/>
+      <enumeration value="capsule"/>
+      <enumeration value="suspension"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="reception-multiplicity">
+    <restriction base="int">
+      <minExclusive value="1"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="expiration">
+    <restriction base="date">
+      <pattern value="([2][0][0-4]\d\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01]))|2050-01-01"/>
+    </restriction>
+  </simpleType>
+
+
+
+
+</schema>
