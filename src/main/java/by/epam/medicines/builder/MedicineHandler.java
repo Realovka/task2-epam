@@ -1,11 +1,7 @@
 package by.epam.medicines.builder;
 
-import by.epam.medicines.entity.Medicine;
-import by.epam.medicines.entity.Analog;
-import by.epam.medicines.entity.Dosage;
-import by.epam.medicines.entity.Certificate;
 import by.epam.medicines.entity.Package;
-import by.epam.medicines.entity.Version;
+import by.epam.medicines.entity.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -31,7 +27,7 @@ public class MedicineHandler extends DefaultHandler {
 
     public MedicineHandler() {
         medicines = new HashSet<>();
-        withText = EnumSet.range(MedicineXmlTag.NAME, MedicineXmlTag.RECEPTION_MULTIPLICITY);
+        withText = EnumSet.range(MedicineXmlTag.MEDICINE, MedicineXmlTag.RECEPTION_MULTIPLICITY);
     }
 
     public Set<Medicine> getMedicines() {
@@ -40,38 +36,21 @@ public class MedicineHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        currentTagName = updateQName(qName);
-        switch (currentTagName) {
-            case MEDICINE: {
-                currentMedicine = new Medicine();
-                if (attributes.getLength() == 1) {
-                    currentMedicine.setId(attributes.getValue(0));
-                    currentMedicine.setOriginal(Medicine.DEFAULT_ORIGINAL);
-                } else {
-                    currentMedicine.setId(attributes.getValue(MedicineXmlAttribute.ID.toString()));
-                    currentMedicine.setOriginal(attributes.getValue(MedicineXmlAttribute.ORIGINAL.toString()));
-                }
-                break;
+        if (qName.equals(MedicineXmlTag.MEDICINE.toString())) {
+            currentMedicine = new Medicine();
+            if (attributes.getLength() == 1) {
+                currentMedicine.setId(attributes.getValue(0));
+                currentMedicine.setOriginal(Medicine.DEFAULT_ORIGINAL);
+            } else {
+                currentMedicine.setId(attributes.getValue(MedicineXmlAttribute.ID.toString()));
+                currentMedicine.setOriginal(attributes.getValue(MedicineXmlAttribute.ORIGINAL.toString()));
             }
-            case ANALOG: {
-                currentAnalog = new Analog();
-                break;
-            }
-            case VERSION: {
-                currentVersion = new Version();
-                break;
-            }
-            case CERTIFICATE: {
-                currentCertificate = new Certificate();
-                break;
-            }
-            case PACKAGE: {
-                currentPackage = new Package();
-                break;
-            }
-            case DOSAGE: {
-                currentDosage = new Dosage();
-                break;
+
+
+        } else {
+            MedicineXmlTag temp = updateQName(qName);
+            if (withText.contains(temp)) {
+                currentTagName = temp;
             }
         }
     }
@@ -121,8 +100,28 @@ public class MedicineHandler extends DefaultHandler {
                     currentMedicine.setGroup(data);
                     break;
                 }
+                case ANALOG: {
+                    currentAnalog = new Analog();
+                    break;
+                }
                 case ANALOG_NAME: {
                     currentAnalog.setAnalogName(data);
+                    break;
+                }
+                case VERSION: {
+                    currentVersion = new Version();
+                    break;
+                }
+                case CERTIFICATE: {
+                    currentCertificate = new Certificate();
+                    break;
+                }
+                case PACKAGE: {
+                    currentPackage = new Package();
+                    break;
+                }
+                case DOSAGE: {
+                    currentDosage = new Dosage();
                     break;
                 }
                 case FORM: {
