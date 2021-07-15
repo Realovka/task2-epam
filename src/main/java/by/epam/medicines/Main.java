@@ -5,7 +5,7 @@ import by.epam.medicines.builder.MedicineBuilderFactory;
 import by.epam.medicines.exception.MedicineException;
 import by.epam.medicines.validator.MedicineXmlValidator;
 
-public class Main{
+public class Main {
 
     private static final String RELATIVE_FILE_PATH = "data/medicines.xml";
     private static final String RELATIVE_SCHEMA_PATH = "data/medicines.xsd";
@@ -32,7 +32,5 @@ public class Main{
         System.out.println(domBuilder.getMedicines());
 
     }
-
-
 }
 
