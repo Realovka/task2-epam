@@ -363,6 +363,7 @@
                 <drug-dosage>500</drug-dosage>
                 <reception-multiplicity>2</reception-multiplicity>
             </dosage>
+        </version>
             <version>
                 <form>injection</form>
                 <certificate>
@@ -380,7 +381,6 @@
                     <reception-multiplicity>1</reception-multiplicity>
                 </dosage>
             </version>
-        </version>
     </medicine>
 
     <medicine id="id11" original="true">
