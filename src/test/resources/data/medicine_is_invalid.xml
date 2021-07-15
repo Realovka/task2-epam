@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://example.com/medicines"
+           xsi:schemaLocation="http://example.com/medicines medicines.xsd">
+
+    <medicine id="id1">
+        <name>Enalapril-LF</name>
+        <pharm>Lecfarm</pharm>
+        <group>antihypertensive
+        <analog>
+            <analog-name>Berlipril</analog-name>
+        </analog>
+        <analog>
+            <analog-name>Enap</analog-name>
+        </analog>
+        <version>
+            <form>tablet</form>
+            <certificate>
+                <number>20/03/1371</number>
+                <issuance>2016-06-02</issuance>
+                <expiration>2050-01-01</expiration>
+            </certificate>
+            <package>
+                <type>blister</type>
+                <number-in-package>30</number-in-package>
+                <price-per-package>2.3</price-per-package>
+            </package>
+            <dosage>
+                <drug-dosage>10</drug-dosage>
+                <reception-multiplicity>1</reception-multiplicity>
+            </dosage>
+        </version>
+    </medicine>

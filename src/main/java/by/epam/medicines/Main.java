@@ -1,27 +1,38 @@
 package by.epam.medicines;
 
-import by.epam.medicines.builder.*;
+import by.epam.medicines.builder.AbstractMedicineBuilder;
+import by.epam.medicines.builder.MedicineBuilderFactory;
 import by.epam.medicines.exception.MedicineException;
 import by.epam.medicines.validator.MedicineXmlValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Main{
-    private static final Logger logger = LogManager.getLogger();
-    private static final String RELATIVE_FILE_PATH = "/data/medicines.xml";
-    private static final String RELATIVE_SCHEMA_PATH = "/data/medicines.xsd";
+
+    private static final String RELATIVE_FILE_PATH = "data/medicines.xml";
+    private static final String RELATIVE_SCHEMA_PATH = "data/medicines.xsd";
 
     public static void main(String[] args) throws MedicineException {
-
         MedicineXmlValidator validator = new MedicineXmlValidator();
-        if (!validator.isValidXmlFile(RELATIVE_FILE_PATH, RELATIVE_SCHEMA_PATH)) {
+        String pathToXml = ClassLoader.getSystemClassLoader().getResource(RELATIVE_FILE_PATH).getFile();
+        String pathToXsd = ClassLoader.getSystemClassLoader().getResource(RELATIVE_SCHEMA_PATH).getFile();
+
+        if (!validator.isValidXmlFile(pathToXml, pathToXsd)) {
             return;
         }
 
-//        AbstractMedicineBuilder saxBuilder = MedicineBuilderFactory.createBuilder("sax");
-//        saxBuilder.buildMedicines(RELATIVE_FILE_PATH);
-//        System.out.println(saxBuilder.getMedicines());
+        AbstractMedicineBuilder saxBuilder = MedicineBuilderFactory.createBuilder("sax");
+        saxBuilder.buildMedicines(pathToXml);
+        System.out.println(saxBuilder.getMedicines());
+
+        AbstractMedicineBuilder staxBuilder = MedicineBuilderFactory.createBuilder("stax");
+        staxBuilder.buildMedicines(pathToXml);
+        System.out.println(staxBuilder.getMedicines());
+
+        AbstractMedicineBuilder domBuilder = MedicineBuilderFactory.createBuilder("dom");
+        domBuilder.buildMedicines(pathToXml);
+        System.out.println(domBuilder.getMedicines());
 
     }
+
+
 }
 
